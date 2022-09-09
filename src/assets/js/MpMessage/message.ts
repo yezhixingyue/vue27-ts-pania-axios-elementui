@@ -41,16 +41,20 @@ class Message {
       main += `<div class='message-box-content'>${options.message}</div>`;
     }
     const { onOk, onCancel } = options;
+    const handleOkClick = (close: Function) => {
+      if (onOk) onOk(close);
+      close();
+    };
     const width = options.width || !options.message ? '320px' : '380px';
-    this._create({ width, showClose: false, showHeader: false, main, onOk, onClose: onCancel, minHeight: '180px', showSubmit, submitText, showCancel, cancelText, isCancelDefaultStyle, closeWhenCancel });
+    this._create({ width, showClose: false, showHeader: false, main, onOk: handleOkClick, onClose: onCancel, minHeight: '180px', showSubmit, submitText, showCancel, cancelText, isCancelDefaultStyle, closeWhenCancel });
   }
   warn(options: IMessageOptions) {
-    const showSubmit = typeof options.showSubmit === 'boolean' ? options.showSubmit : true;
-    const showCancel = typeof options.showCancel === 'boolean' ? options.showCancel : false;
+    const showSubmit = typeof options.showSubmit === 'boolean' ? options.showSubmit : false;
+    const showCancel = typeof options.showCancel === 'boolean' ? options.showCancel : true;
     const type: IMessageType = {
       showSubmit,
       showCancel,
-      cancelText: options.cancelText || '取消',
+      cancelText: options.cancelText || '确定',
       submitText: options.submitText || '确定',
       iconColor: 'warning',
       iconClass: 'icon-warn',
@@ -64,7 +68,7 @@ class Message {
     const type: IMessageType = {
       showSubmit,
       showCancel,
-      cancelText: options.cancelText || '关闭',
+      cancelText: options.cancelText || '确定',
       submitText: options.submitText || '确定',
       iconColor: 'success',
       iconClass: 'icon-success',

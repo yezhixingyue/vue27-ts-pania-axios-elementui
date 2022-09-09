@@ -44,11 +44,7 @@
     // await api.getUser();
     // await api.getUser();
     // await api.getUser();
-    // api.getUser();
-    // api.getUser();
-    // api.getUser();
-    // api.getUser();
-    // api.getUser();
+    api.getUser();
   })
   </script>
   

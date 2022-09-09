@@ -102,5 +102,7 @@ export class Handler {
     TokenClass.removeToken();
     localCancelToken.cancelAllRequest();
     router.replace('/login');
+    const messageDoms = document.body.querySelectorAll('.mp-check-file-dialog-mask-wrap');
+    messageDoms.forEach(it => document.body.removeChild(it));
   }
 }

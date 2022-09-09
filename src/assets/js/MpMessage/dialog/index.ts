@@ -1,9 +1,9 @@
-import imgSrc from './loading.png';
+import imgSrc from './assets/loading.png';
 import { classNameHandler, delay } from '../utils';
-import { mergeIDialogOptions } from './utils';
+import { mergeIDialogOptions } from './assets/utils';
 import type { ICloseOptions, IDialogOptions } from './types';
-import './index.scss';
-import './icon/iconfont.css'
+import './assets/index.scss';
+import './assets/icon/iconfont.css'
 import { ElementDragHandler } from '../utils';
 
 let zIndexNum = 1000;
@@ -175,7 +175,11 @@ export default class Dialog {
           this.content.style.opacity = '0';
         }
         await delay(200);
-        document.body.removeChild(this.mask);
+        try {
+          if (this.mask) document.body.removeChild(this.mask);
+        // eslint-disable-next-line no-empty
+        } catch (err) {
+        }
       }
       this.mask = null;
       this.content = null;

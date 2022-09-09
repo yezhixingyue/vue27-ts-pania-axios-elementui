@@ -7,9 +7,10 @@ const instance: IMPAxiosInstance = axios.create({}); // baseURL: '/', timeout: 1
 instance.interceptors.request.use(
   (config) => {
     try {
-      Handler.setToken(config);
       Handler.setLoading(config);
       Handler.setCancelToken(config);
+      Handler.setToken(config);
+      
     } catch (error) {
       Handler.backToLogin();
     }

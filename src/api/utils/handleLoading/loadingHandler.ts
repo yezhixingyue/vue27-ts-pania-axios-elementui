@@ -12,6 +12,7 @@ class LoadingHandler {
   display() {
     this.count += 1;
     this.loadingInstance = message.loading();
+    console.log(0, this.count);
     // this.loadingInstance = Loading.service({
     //   lock: true,
     //   text: 'Loading',

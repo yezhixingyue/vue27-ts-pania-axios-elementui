@@ -1,10 +1,10 @@
-import type { IDialogOptions } from "./types";
+import type { IDialogOptions } from "../types";
 
 export const mergeIDialogOptions = (options: IDialogOptions) => {
   const _options: Required<IDialogOptions> = {
     width: 'auto',
     height: '',
-    top: '28vh',
+    top: '23vh',
     minWidth: '320px',
     maxWidth: '600px',
     minHeight: '240px',
