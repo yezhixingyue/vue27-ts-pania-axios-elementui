@@ -1,0 +1,190 @@
+$primary: #26bcf9;
+$danger: #ff3769;
+$gray: #989898;
+
+.mp-check-file-dialog-mask-wrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 9999;
+  transition: 0.2s ease-out;
+  overflow: auto;
+  overflow: overlay;
+  padding: 20px;
+  padding-top: 0;
+  box-sizing: border-box;
+  
+  .mp-check-file-dialog-content-wrap {
+    border-radius: 5px;
+    background-color: #fff;
+    display: flex;
+    margin: 0 auto;
+    opacity: 0;
+    transition:  0.2s ease-out;
+    transition-property: transform, opacity;
+    transform: translateY(-20px);
+    padding: 25px 20px;
+    padding-top: 35px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    > .close-btn {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      cursor: pointer;
+      &:hover {
+        color: $primary;
+      }
+    }
+    > header , > footer {
+      flex: none;
+    }
+    > header {
+      text-align: left;
+      padding-bottom: 10px;
+      margin-top: -22px;
+      padding-right: 12px;
+      &.point {
+        &::before {
+          content: '';
+          display: inline-block;
+          width: 3px;
+          height: 16px;
+          background-color: $primary;
+          vertical-align: -3px;
+          margin-right: 10px;
+        }
+      }
+    }
+    > footer {
+      padding-top: 25px;
+      text-align: center;
+    }
+    > main {
+      flex: 1;
+    }
+  }
+
+  .loading-box {
+    color: darken(#428dfa, 12);
+    font-size: 15px;
+    text-align: center;
+    margin-top: 40vh;
+    transform: translateY(-50%);
+    transition: 0.2s ease-out;
+    opacity: 0;
+    > p {
+      margin-top: 2px;
+    }
+    > img {
+      @keyframes loading {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      animation: loading 2s linear infinite;
+    }
+  }
+}
+
+.message-box-title {
+  font-size: 16px;
+  padding-bottom: 22px;
+  padding-top: 6px;
+  word-break: break-word;
+  text-align: center;
+  > i.iconfont {
+    vertical-align: -4px;
+    margin-right: 8px;
+  }
+}
+.message-box-content {
+  min-height: 52px;
+  word-break: break-word;
+  color: lighten(#444, 24);
+  text-align: center;
+}
+
+.mp-check-file-dialog-content-wrap {
+
+  button {
+    height: 32px;
+    outline: none;
+    padding: 0 15px;
+    box-shadow: none;
+    border: 1px solid #dcdfe6;
+    border-radius: 3px;
+    transition: 0.1s ease-in-out;
+    cursor: pointer;
+    background:#F8F9FE;
+    &::placeholder {
+      color: #bbb;
+    };
+    &:focus {
+      border-color: $primary;
+    };
+    width: 120px;
+    background-color: $primary;
+    border-color: $primary;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding-bottom: 1px;
+    &:hover {
+      background-color: lighten($primary, 5);
+    }
+    &:active {
+      background-color: darken($primary, 5);
+      color: darken($primary, 25);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    & + button {
+      margin-left: 20px;
+    }
+    &.default {
+      background-color: #fff;
+      border: 1px solid $primary;
+      color: $primary;
+      &:hover {
+        color: $primary;
+        border-color: $primary;
+        background-color: lighten($primary, 34);
+      }
+      &:active {
+        background-color: lighten($primary, 25);
+        color: darken($primary, 20);
+        border-color: darken($primary, 20);
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+    }
+    &.warning {
+      background-color: $danger;
+      border-color: $danger;
+      &:hover {
+        background-color: lighten($danger, 5);
+      }
+      &:active {
+        background-color: darken($danger, 5);
+        color: darken($danger, 25);
+      }
+    }
+    &.disabled {
+      background-color: lighten($gray, 15) !important;
+      border-color: lighten($gray, 15) !important;
+      cursor: not-allowed;
+      color: #fff;
+      pointer-events: none;
+    }
+  }
+}

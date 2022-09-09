@@ -1,4 +1,6 @@
 import { MessageBox } from "element-ui";
+import 'element-ui/lib/theme-chalk/message.css';
+import 'element-ui/lib/theme-chalk/message-box.css';
 import '../css/message.scss';
 
 interface IOptions {
@@ -6,17 +8,18 @@ interface IOptions {
   message?: string
   onOk?: () => void
   onCancel?: () => void
-  showCancelButton?: boolean
-  cancelButtonText?: string
-  showConfirmButton?: boolean
-  confirmButtonText?: string
+  showCancel?: boolean
+  cancelText?: string
+  showSubmit?: boolean
+  submitText?: string
 }
 
+type MessageType = 'error' | 'warn' | 'success';
+
 class MpMessage {
-  private toast(options: IOptions, type: 'error' | 'warn' | 'success') {
-    const { title, message, showCancelButton, cancelButtonText, showConfirmButton, confirmButtonText, onOk, onCancel } = options;
-    let icon = 'el-icon-error danger';
-    let className = 'error';
+  private getMessageTypeInfo(type: MessageType) { // 获取提示类型相关信息
+    let icon;
+    let className ;
     switch (type) {
       case 'warn':
         icon = 'el-icon-warning warning';
@@ -27,25 +30,40 @@ class MpMessage {
         className = 'success';
         break;
       default:
+        icon = 'el-icon-error danger';
+        className = 'error';
         break;
     }
-    const content = `
+    return { icon, className };
+  }
+
+  private getMessageContent(icon: string, title?: string, message?: string) { // 获取提示内容
+    return `
       <section class='mp-message-box-content'>
         <header>
           <i class='${icon} ft-36'></i>
-          <span>${title}</span>
+          <span>${title || '提示'}</span>
         </header>
         <main>
           <div>${message || ''}</div>
         </main>
       </section>
     `;
+  }
+
+  private alertHandler(options: IOptions, type: MessageType) { // 弹出消息提示
+    const { title, message, showCancel: showCancelButton, cancelText, showSubmit: showConfirmButton, submitText: confirmButtonText, onOk, onCancel } = options;
+
+    const { icon, className } = this.getMessageTypeInfo(type);
+
+    const content = this.getMessageContent(icon, title, message);
+    
     MessageBox({
       showClose: true,
       title: '',
       message: content,
       showCancelButton,
-      cancelButtonText,
+      cancelButtonText: cancelText,
       showConfirmButton,
       confirmButtonText,
       center: true,
@@ -57,46 +75,46 @@ class MpMessage {
 
   confirm(options: IOptions) {
     const _options: IOptions = {
-      showCancelButton: true,
-      cancelButtonText: '取消',
-      showConfirmButton: true,
-      confirmButtonText: '确定',
+      showCancel: true,
+      cancelText: '取消',
+      showSubmit: true,
+      submitText: '确定',
       ...options,
     }
-    this.toast(_options, 'warn');
+    this.alertHandler(_options, 'warn');
   }
 
   warn(options: IOptions) {
     const _options: IOptions = {
-      showCancelButton: false,
-      cancelButtonText: '取消',
-      showConfirmButton: true,
-      confirmButtonText: '确定',
+      showCancel: false,
+      cancelText: '取消',
+      showSubmit: true,
+      submitText: '确定',
       ...options,
     }
-    this.toast(_options, 'warn');
+    this.alertHandler(_options, 'warn');
   }
 
   error(options: IOptions) {
     const _options: IOptions = {
-      showCancelButton: true,
-      cancelButtonText: '关闭',
-      showConfirmButton: false,
-      confirmButtonText: '确定',
+      showCancel: true,
+      cancelText: '关闭',
+      showSubmit: false,
+      submitText: '确定',
       ...options,
     }
-    this.toast(_options, 'error');
+    this.alertHandler(_options, 'error');
   }
 
   success(options: IOptions) {
     const _options: IOptions = {
-      showCancelButton: true,
-      cancelButtonText: '关闭',
-      showConfirmButton: false,
-      confirmButtonText: '确定',
+      showCancel: true,
+      cancelText: '关闭',
+      showSubmit: false,
+      submitText: '确定',
       ...options,
     }
-    this.toast(_options, 'success');
+    this.alertHandler(_options, 'success');
   }
 }
 

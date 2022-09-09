@@ -34,6 +34,9 @@
   .ft-#{$num} {
     font-size: #{$num}px;
   }
+  .ft-f-#{$num} {
+    font-size: #{$num}px !important;
+  }
 }
 
 // @each $num in 5, 8, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 {

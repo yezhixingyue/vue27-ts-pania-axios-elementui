@@ -9,6 +9,9 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ElButton: typeof import('element-ui/lib/button')['default']
     ElCard: typeof import('element-ui/lib/card')['default']
+    ElLoading: typeof import('element-ui/lib/loading')['default']
+    ElMessage: typeof import('element-ui/lib/message')['default']
+    ElMessageBox: typeof import('element-ui/lib/message-box')['default']
     ElTable: typeof import('element-ui/lib/table')['default']
     ElTableColumn: typeof import('element-ui/lib/table-column')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
