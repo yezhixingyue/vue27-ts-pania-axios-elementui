@@ -1,0 +1,64 @@
+@import './var.scss';
+
+.mp-message-box.el-message-box {
+  width: 336px;
+  vertical-align: baseline;
+  padding-bottom: 28px;
+  &.warn {
+    width: 350px;
+  }
+  .el-message-box__header {
+    padding: 15px;
+    .el-message-box__headerbtn {
+      top: 8px;
+      right: 12px;
+    }
+  }
+  .el-message-box__content {
+    padding-left: 13px;
+    padding-right: 13px;
+    .mp-message-box-content {
+      > header {
+        > i {
+          vertical-align: -6px;
+          margin-right: 5px;
+        }
+        > span {
+          font-weight: 700;
+          font-size: 16px;
+          color: #444;
+        }
+        padding-bottom: 21px;
+      }
+      > main {
+        padding-bottom: 21px;
+        color: #989898;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0.5px;
+      }
+    }
+  }
+  .el-message-box__btns {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    .el-button {
+      width: 100px;
+      height: 30px;
+      padding: 0;
+      font-size: 14px;
+      margin: 0 13px;
+
+      &.cancel {
+        color: $--color-primary;
+        border-color: $--color-primary;
+        &:active {
+          color: darken($color: $--color-primary, $amount: 15);
+          border-color: darken($color: $--color-primary, $amount: 15);
+          background-color: lighten($color: $--color-primary, $amount: 35);
+        }
+      }
+    }
+  }
+}

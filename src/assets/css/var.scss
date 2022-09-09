@@ -1,0 +1,58 @@
+$blue: #428dfa;
+$pink: #ff3769;
+$origin: #f4a307;
+$green: #80c269;
+$gray: #989898;
+
+$primary: $blue !default;
+$danger: $pink !default;
+$warning: $origin !default;
+$success: $green !default;
+
+$theme-colors: (
+  'primary': $primary,
+  'danger': $danger,
+  'warning': $warning,
+  'success': $success,
+);
+
+
+$--color-primary: #26bcf9;
+$--color-white: #ffffff;
+$--color-primary-light: #35dff9;
+$--color-primary-lighter: #63f9d5;
+$--color-blue:#2196f3;
+$--color-blue-1:#428dfa;
+$--color-pink:#ff3769;
+$--color-pink-ligth:#ff90ac;
+$--color-gray-1:#888888;
+$--color-primary-1:#333333;
+$--color-cyan: #33BBD5;
+
+$--color-text-btn-hover: #009EF9;
+//  $--color-text-btn-active: #009EF9;
+
+$--color-text-primary-light: #585858;
+$--color-text-primary: #444444; // 主要文字
+$--color-text-regular: #444444; // 常规文字  11111
+$--color-text-light: #a2a2a2; // 次要文字
+$--color-text-table: #444444 ;  // 表格内容文字 11111
+$--color-text-table-hover: #d8effc ;  // 表格内容文字
+$--color-text-table-time: #989898 ;  // 表格内容文字
+$--color-text-table-cancel: #989898 ;  // 表格内容文字
+$--color-text-table-pending: #e42a2a ;  // 表格内容文字
+$--color-text-table-completed: #80c269 ;  // 表格内容文字
+$--color-text-secondary: #cbcbcb ; // ---------- 禁用文字
+$--color-text-orgin: #f4a307;
+
+$--border-color-base: #e6e6e6 ; // 一级边框
+$--border-color-light: #eeeeee; // 一级边框  rgb(208,208,208)
+$--border-color-dark: rgb(208,208,208);
+$--border-color-v-line: #96bffa;
+
+$--bg-color-base: #f5f5f5; // 245 245 245
+$--bg-color-base-dark: rgb(241,241,241);
+$--bg-color-blue: #79adfa;
+
+$--border-radius-base: 4px ; // 大圆角
+$--border-radius-small: 2px ; // 小圆角
