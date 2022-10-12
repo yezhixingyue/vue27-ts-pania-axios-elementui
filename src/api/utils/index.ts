@@ -4,8 +4,7 @@ import CancelRequestHandler from "./handleCancel/CancelRequestHandler";
 import { handleErrorToast } from "./handleToast/handleErrorToast";
 import { handleFailToast } from "./handleToast/handleFailToast";
 import { loadingHandler } from "./handleLoading/loadingHandler";
-import TokenClass from "./handleToken/TokenClass";
-import { handleToken } from "./handleToken/tokenHandler";
+import { handleToken, tokenHandler } from "./handleToken/tokenHandler";
 
 
 export const localCancelToken = new CancelRequestHandler();
@@ -19,7 +18,7 @@ export class Handler {
    * @memberof Utils
    */
   static setLoading(config: AxiosRequestConfig) {
-    if (config.loading !== false) { // 展示loading
+    if (config && config.loading !== false) { // 展示loading
       loadingHandler.display();
     }
   }
@@ -32,7 +31,7 @@ export class Handler {
    * @memberof Utils
    */
   static closeLading(config: AxiosRequestConfig) {
-    if (config.loading !== false) { // 关闭loading
+    if (config && config.loading !== false) { // 关闭loading
       loadingHandler.hidden();
     }
   }
@@ -99,7 +98,7 @@ export class Handler {
    * @memberof Utils
    */
   static backToLogin() {
-    TokenClass.removeToken();
+    tokenHandler.removeToken();
     localCancelToken.cancelAllRequest();
     router.replace('/login');
     const messageDoms = document.body.querySelectorAll('.mp-check-file-dialog-mask-wrap');

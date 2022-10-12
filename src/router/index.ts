@@ -11,7 +11,6 @@ export const routes = [
   {
     path: '/home',
     name: 'home',
-    hidden: true,
     meta: {
       name: '首页',
     },
@@ -20,7 +19,6 @@ export const routes = [
   {
     path: '/test',
     name: 'test',
-    hidden: true,
     meta: {
       name: '测试页面',
     },
@@ -29,7 +27,6 @@ export const routes = [
   {
     path: '/login',
     name: 'login',
-    hidden: true,
     meta: {
       name: '登录页面',
     },

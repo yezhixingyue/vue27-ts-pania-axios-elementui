@@ -1,7 +1,3 @@
-<script setup lang='ts'>
-  import Test from '@/components/Test.vue';
-</script>
-
 <template>
   <section>
     Test 页面
@@ -9,6 +5,10 @@
   </section>
 </template>
 
+<script setup lang='ts'>
+import Test from '@/components/Test.vue';
+</script>
+
+
 <style scoped lang='scss'>
-// deep
 </style>

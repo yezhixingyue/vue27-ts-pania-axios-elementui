@@ -1,8 +1,17 @@
 import type { AxiosRequestConfig } from "axios";
-import TokenClass from "./TokenClass";
+import { TokenClass } from "yezhixingyue-js-utils-4-mpzj";
+import api from "@/api/index";
+
+export const tokenHandler = new TokenClass({
+  labelName: {
+    token: 'converterToken',
+    user: 'converterUser',
+  },
+  getUserInfoFunc: () => api.getUser(),
+});
 
 export const handleToken = (config: AxiosRequestConfig) => {
-  const token = TokenClass.getToken();
+  const token = tokenHandler.getToken();
   if (!token && !config.withoutToken) {
     throw new Error('请重新登录');
   }

@@ -1,53 +1,3 @@
-<script setup lang="ts">
-  import { onMounted, ref } from 'vue'
-  import { useTestStore } from '../store/modules/test';
-  import { storeToRefs } from 'pinia';
-  import api from '@/api';
-  
-  const props = defineProps<{
-    msg: string
-  }>()
-
-  const testStore = useTestStore()
-
-  const { counter, name } = storeToRefs(testStore)
-  
-  const count = ref(0)
-
-  const tableData = ref([{
-    date: '2016-05-02',
-    name: '王小虎',
-    address: '上海市普陀区金沙江路 1518 弄'
-  }, {
-    date: '2016-05-04',
-    name: '王小虎',
-    address: '上海市普陀区金沙江路 1517 弄'
-  }, {
-    date: '2016-05-01',
-    name: '王小虎',
-    address: '上海市普陀区金沙江路 1519 弄'
-  }, {
-    date: '2016-05-03',
-    name: '王小虎',
-    address: '上海市普陀区金沙江路 1516 弄'
-  }]);
-
-  console.log(count, count.value, props.msg, testStore);
-
-  const request = async () => {
-    const resp =  await api.getLogin(2);
-    console.log(resp);
-  }
-
-  onMounted(async () => {
-    // api.getLogin(1);
-    // await api.getUser();
-    // await api.getUser();
-    // await api.getUser();
-    api.getUser();
-  })
-  </script>
-  
 <template>
   <div>
     <h3>{{ msg }}</h3>
@@ -84,6 +34,57 @@
   </div>
 
 </template>
+
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import { useTestStore } from '../store/modules/test';
+import { storeToRefs } from 'pinia';
+import api from '@/api';
+
+const props = defineProps<{
+  msg: string
+}>()
+
+const testStore = useTestStore()
+
+const { counter, name } = storeToRefs(testStore)
+
+const count = ref(0)
+
+const tableData = ref([{
+  date: '2016-05-02',
+  name: '王小虎',
+  address: '上海市普陀区金沙江路 1518 弄'
+}, {
+  date: '2016-05-04',
+  name: '王小虎',
+  address: '上海市普陀区金沙江路 1517 弄'
+}, {
+  date: '2016-05-01',
+  name: '王小虎',
+  address: '上海市普陀区金沙江路 1519 弄'
+}, {
+  date: '2016-05-03',
+  name: '王小虎',
+  address: '上海市普陀区金沙江路 1516 弄'
+}]);
+
+console.log(count, count.value, props.msg, testStore);
+
+const request = async () => {
+  const resp =  await api.getLogin(2);
+  console.log(resp);
+}
+
+onMounted(async () => {
+  // api.getLogin(1);
+  // await api.getUser();
+  // await api.getUser();
+  // await api.getUser();
+  // api.getUser();
+})
+</script>
+  
   
 <style scoped>
 .read-the-docs {

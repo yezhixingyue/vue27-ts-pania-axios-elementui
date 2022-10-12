@@ -1,7 +1,8 @@
-import message from "@/assets/js/MpMessage/message";
+// import message from "@/assets/js/MpMessage/message";
+import { CanceledError } from "axios";
 import { Handler } from "..";
-// import { Message } from 'element-ui';
-// import { message } from "@/assets/js/message";
+import { Message } from 'element-ui';
+import { message } from "@/assets/js/message";
 
 const getErrorTitle = (error:any) => {
   let title = error?.response?.data?.Message;
@@ -42,13 +43,16 @@ const getErrorTitle = (error:any) => {
 }
 
 export const handleErrorToast = (error: any) => {
+  if (error instanceof CanceledError) {
+    return;
+  }
   const title = getErrorTitle(error);
     
-  // if ([401, 403].includes(error?.response?.status)) {
-  //   Message.error(title);
-  //   Handler.backToLogin();
-  //   return;
-  // }
+  if ([401, 403].includes(error?.response?.status)) {
+    Message.error(title);
+    Handler.backToLogin();
+    return;
+  }
 
   const cb = () => {
     if ([401, 403].includes(error?.response?.status)) {

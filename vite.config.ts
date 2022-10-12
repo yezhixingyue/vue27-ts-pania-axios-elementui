@@ -18,21 +18,21 @@ export default defineConfig({
     vueJsx({
       // options are passed on to @vue/babel-preset-jsx
     }),
-    Components({
-      resolvers: [ElementUiResolver()],
-    }),
-    createStyleImportPlugin({
-      libs: [
-        {
-          libraryName: 'element-ui',
-          esModule: true,
-          ensureStyleFile: true,
-          resolveStyle: (name) => {
-            return `element-ui/lib/theme-chalk/${name}.css`;
-          },
-        }
-      ],
-    }),
+    // Components({
+    //   resolvers: [ElementUiResolver()],
+    // }),
+    // createStyleImportPlugin({
+    //   libs: [
+    //     {
+    //       libraryName: 'element-ui',
+    //       esModule: true,
+    //       ensureStyleFile: true,
+    //       resolveStyle: (name) => {
+    //         return `element-ui/lib/theme-chalk/${name}.css`;
+    //       },
+    //     }
+    //   ],
+    // }),
   ],
   build: {
     rollupOptions: {

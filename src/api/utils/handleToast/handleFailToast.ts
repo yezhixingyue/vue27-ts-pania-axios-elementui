@@ -2,8 +2,8 @@ import type { AxiosResponse, AxiosRequestConfig } from "axios";
 import type { IMpResponse } from "../../types/type";
 import { Handler } from "..";
 import { toastConfig } from "./toast.config";
-import message from "@/assets/js/MpMessage/message";
-// import { message } from "@/assets/js/message";
+// import message from "@/assets/js/MpMessage/message";
+import { message } from "@/assets/js/message";
 
 
 const getApiFailTitle = (config: AxiosRequestConfig) => {
